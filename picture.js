@@ -40,10 +40,7 @@ function getRandomPicture() {
             displayQuestion();
             state.blockIndexSelected = element.target.id;
           };
-          document.body.insertBefore(
-            newDiv,
-            document.getElementById("picture")
-          );
+          document.getElementById("picture").appendChild(newDiv);
         }
         document.getElementById(
           "picture"
