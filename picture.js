@@ -81,21 +81,30 @@ function displayInput() {
   }
 }
 
-function checkInput() {
+async function checkInput() {
   if (word.length != input.length) {
     return;
   }
   if(word.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "") == input.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")) {
     document.getElementById("picture-name-response").innerText = "Bravo !"
     clearInterval(timerInterval)
+    document.getElementById("solution").innerHTML=`<p>The solution is : ${word}</p>`
+    const seconds = timer % 60
+    const minutes = (timer - seconds) / 60
+    document.getElementById("solution-timer").innerHTML=`<p>Time passed : ${minutes<10 ? "0"+minutes : minutes}:${seconds<10?"0"+seconds:seconds}</p>`
+    const url = await getGifUrl(true)
+    document.getElementById('success-modal-gif').src=url
+    document.getElementById("success-modal").hidden=false
     return
   }
-  const failedAttemptsContainer = document.getElementById("failed-attempts-container")
+  const failedAttemptsContainers = document.getElementsByClassName("failed-attempts-container")
   var failedAttempt = document.createElement("p");
   failedAttempt.className = "failed-attempts-item"
   failedAttempt.innerText = input
-  failedAttemptsContainer.appendChild(failedAttempt)
-  console.log(failedAttemptsContainer)
+  for (var i=0; i<failedAttemptsContainers.length; i++){
+    // failedAttemptsContainers[i].innerHTML(failedAttempt.cloneNode())
+    failedAttemptsContainers[i].innerHTML+= `<p class="failed-attempts-item">${input}</p>`
+  }
   input=""
   displayInput()
 }

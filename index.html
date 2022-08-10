@@ -8,22 +8,23 @@
     <script src="quizz.js"></script>
   </head>
   <body>
-    <button onclick="displayQuestion()">Get question</button>
-    <div id="quizz-modal">
-      <div class="close-button" onclick="hideModal()">X</div>
-      <div id="quizz-container">
-        <p id="question"></p>
-        <p id="answer-0" class="answer" onclick="handleResponse(this)"></p>
-        <p id="answer-1" class="answer" onclick="handleResponse(this)"></p>
-        <p id="answer-2" class="answer" onclick="handleResponse(this)"></p>
-        <p id="answer-3" class="answer" onclick="handleResponse(this)"></p>
-      </div>
-      <div id="quizz-response-container">
-        <img id="response-gif" />
-        <p id="button-continue" class="answer" onclick="hideModal()">
-          Continue
-        </p>
-        <p id="quizz-response"></p>
+    <div class="quizz-modal-wrapper">
+      <div id="quizz-modal">
+        <div class="close-button" onclick="hideModal()">X</div>
+        <div id="quizz-container">
+          <p id="question"></p>
+          <p id="answer-0" class="answer" onclick="handleResponse(this)"></p>
+          <p id="answer-1" class="answer" onclick="handleResponse(this)"></p>
+          <p id="answer-2" class="answer" onclick="handleResponse(this)"></p>
+          <p id="answer-3" class="answer" onclick="handleResponse(this)"></p>
+        </div>
+        <div id="quizz-response-container">
+          <img id="response-gif" />
+          <p id="button-continue" class="answer" onclick="hideModal()">
+            Continue
+          </p>
+          <p id="quizz-response"></p>
+        </div>
       </div>
     </div>
     <div class="container">
@@ -45,7 +46,17 @@
       </div>
       <div class="right">
         <p class="failed-attempts-title">Failed attempts</p>
-        <div id="failed-attempts-container"></div>
+        <div class="failed-attempts-container"></div>
+      </div>
+    </div>
+    <div id="success-modal" hidden>
+      <img id="success-modal-gif" src="23f0.png"/>
+      <div id="solution"></div>
+      <div class="stat-container">
+        <div><p id="solution-timer"></p></div>
+        <div><p class="failed-attempts-title">Failed attempts</p>
+          <div class="failed-attempts-container"></div>
+        </div>
       </div>
     </div>
     <script src="picture.js"></script>

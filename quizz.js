@@ -19,18 +19,23 @@ async function displayQuestion() {
   document.getElementById("quizz-modal").hidden = false;
 }
 
+async function getGifUrl(win) {
+    const response = await fetch(
+        `https://tenor.googleapis.com/v2/search?q=${
+          win ? "win" : "lose"
+        }&key=AIzaSyA5S4nC2B2GWeqVeQj5whLWe6VkSdS54go&limit=50`
+      );
+      const data = await response.json();
+      var picture = data.results[getRandom(0,data.results.length)];
+      return picture.media_formats.gif.url
+}
+
 async function displayGif(win) {
-  const response = await fetch(
-    `https://tenor.googleapis.com/v2/search?q=${
-      win ? "win" : "lose"
-    }&key=AIzaSyA5S4nC2B2GWeqVeQj5whLWe6VkSdS54go&limit=8`
-  );
-  const data = await response.json();
-  var picture = data.results[getRandom(0, data.results.length)];
+  const url = await getGifUrl(win)
   document.getElementById("button-continue").hidden = false;
   document.getElementById("quizz-container").hidden = true;
   document.getElementById("response-gif").hidden = false;
-  document.getElementById("response-gif").src = picture.media_formats.gif.url;
+  document.getElementById("response-gif").src = url;
 }
 
 function handleResponse(elt) {
