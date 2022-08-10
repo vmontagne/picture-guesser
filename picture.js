@@ -80,11 +80,19 @@ function checkInput() {
   if (word.length != input.length) {
     return
   }
-  if(word.toLowerCase().normalize() == input.toLowerCase().normalize()) {
+  if(word.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "") == input.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")) {
     document.getElementById("picture-name-response").innerText = "Bravo !"
+    clearInterval(timerInterval)
     return
   }
-  document.getElementById("picture-name-response").innerText = "Tu es un looser !"
+  const failedAttemptsContainer = document.getElementById("failed-attempts-container")
+  var failedAttempt = document.createElement("p");
+  failedAttempt.className = "failed-attempts-item"
+  failedAttempt.innerText = input
+  failedAttemptsContainer.appendChild(failedAttempt)
+  console.log(failedAttemptsContainer)
+  input=""
+  displayInput()
 }
 
 document.addEventListener('keyup', (event) => {
@@ -95,10 +103,22 @@ document.addEventListener('keyup', (event) => {
     checkInput()
     return
   }
-  else if (input.length < word.length && event.key.match(/^[A-Za-z]$/) ) {
+  else if (input.length < word.length && event.key.match(/^[A-Za-zÀ-ž]$/) ) {
     input += event.key
   }
   displayInput()
 });
 
 getRandomPicture();
+
+var timer = 0
+function displayTimer () {
+  const seconds = timer % 60
+  const minutes = (timer - seconds) / 60
+  document.getElementById("timer").innerText = `${minutes<10 ? "0"+minutes : minutes}:${seconds<10?"0"+seconds:seconds}`
+}
+
+const timerInterval = setInterval(() => {
+  timer += 1
+  displayTimer()
+}, 1000);

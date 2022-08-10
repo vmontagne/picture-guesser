@@ -8,7 +8,6 @@
     <script src="quizz.js"></script>
   </head>
   <body>
-    <button onclick="displayQuestion()">Get question</button>
     <div id="quizz-modal">
       <div id="quizz-container">
         <p id="question"></p>
@@ -18,11 +17,23 @@
         <p id="answer-3" onclick="handleResponse(this)"></p>
       </div>
       <div id="quizz-response-container"><p id="quizz-response"></p></div>
-
-      <div id="picture"></div>
-      <div id="letters-answer-container"></div>
-      <div id="picture-name-response-container">
-        <p id="picture-name-response"></p>
+    </div>
+    <div class="container">
+      <div class="main">
+        <div class="header">
+          <img src="23f0.png" class="timer-picture"/>
+          <span id="timer"></span>
+        </div>
+        <div id="picture"></div>
+        <div id="letters-answer-container">
+        </div>
+        <div id="picture-name-response-container">
+          <p id="picture-name-response"></p>
+        </div>
+      </div>
+      <div class="right">
+        <p class="failed-attempts-title">Failed attempts</p>
+        <div id="failed-attempts-container"></div>
       </div>
     </div>
     <script src="picture.js"></script>

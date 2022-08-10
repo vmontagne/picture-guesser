@@ -1,5 +1,41 @@
-#letters-answer-container {
-  display: flex;
+.header {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+
+#timer {
+    font-size: 40px;
+    margin: 0 0 0 20px;
+}
+
+.container{
+    display:flex
+}
+.main{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    flex:1
+}
+.right{
+    min-width: 25vh;
+    border-left: solid 1px #000;
+    padding-left:20px;
+}
+
+.failed-attempts-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.timer-picture{
+    max-width:70px;
+    height:auto;
+}
+
+#letters-answer-container{
+    display:flex;
 }
 
 .letters-answer {
@@ -14,17 +50,17 @@
 }
 
 .block {
-  width: 198px;
-  height: 198px;
-  background-color: red;
-  border: 1px solid black;
+  width: 138px;
+  height: 138px;
+  backdrop-filter: blur(30px);
+  border: 1px solid white;
   float: left;
   position: relative;
 }
 
 #picture {
-  width: 600px;
-  height: 600px;
+  width: 420px;
+  height: 420px;
 }
 
 #quizz-modal {
