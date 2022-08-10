@@ -1,3 +1,9 @@
+function State() {
+  this.blockIndexSelected = null;
+}
+
+var state = new State();
+
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
@@ -17,12 +23,32 @@ function getRandomPicture() {
     }
   ).then(function (response) {
     response.json().then((data) => {
-      console.log(data);
-      // todo handle when no result
-      var randomPictureNumber = getRandom(0, data.photos.length);
-      const randomPicture = data.photos[0];
-      document.getElementById("picture").src = randomPicture.src.large;
-      console.log(randomWord, randomPicture);
+      if (data.total_results === 0) {
+        getRandomPicture();
+      } else {
+        // success
+        console.log(randomWord, data);
+        var randomPictureNumber = getRandom(0, data.photos.length);
+        const randomPicture = data.photos[0];
+
+        for (var i = 0; i < 9; i++) {
+          var newDiv = document.createElement("div");
+          newDiv.className = "block";
+          newDiv.id = "block-" + i;
+          newDiv.onclick = (element) => {
+            console.log(element, element.target.id);
+            displayQuestion();
+            state.blockIndexSelected = element.target.id;
+          };
+          document.body.insertBefore(
+            newDiv,
+            document.getElementById("picture")
+          );
+        }
+        document.getElementById(
+          "picture"
+        ).style.backgroundImage = `url(${randomPicture.src.large}`;
+      }
     });
   });
 }
