@@ -9,22 +9,22 @@
   </head>
   <body>
     <button onclick="displayQuestion()">Get question</button>
-    <div id="quizz-container">
-      <p id="question"></p>
-      <p id="answer-0" onclick="handleResponse(this)"></p>
-      <p id="answer-1" onclick="handleResponse(this)"></p>
-      <p id="answer-2" onclick="handleResponse(this)"></p>
-      <p id="answer-3" onclick="handleResponse(this)"></p>
-    </div>
-    <div id="quizz-response-container"><p id="quizz-response"></p></div>
+    <div id="quizz-modal">
+      <div id="quizz-container">
+        <p id="question"></p>
+        <p id="answer-0" onclick="handleResponse(this)"></p>
+        <p id="answer-1" onclick="handleResponse(this)"></p>
+        <p id="answer-2" onclick="handleResponse(this)"></p>
+        <p id="answer-3" onclick="handleResponse(this)"></p>
+      </div>
+      <div id="quizz-response-container"><p id="quizz-response"></p></div>
 
-    <div id="picture"></div>
-    <div id="letters-answer-container">
+      <div id="picture"></div>
+      <div id="letters-answer-container"></div>
+      <div id="picture-name-response-container">
+        <p id="picture-name-response"></p>
+      </div>
     </div>
-    <div id="picture-name-response-container">
-      <p id="picture-name-response"></p>
-    </div>
-    <div id="quizz-modal"></div>
     <script src="picture.js"></script>
   </body>
 </html>
