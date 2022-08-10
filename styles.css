@@ -11,4 +11,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+} 
+
+.block {
+  width: 198px;
+  height: 198px;
+  background-color: red;
+  border: 1px solid black;
+  float: left;
+  position: relative;
+}
+
+#picture {
+  width: 600px;
+  height: 600px;
 }
