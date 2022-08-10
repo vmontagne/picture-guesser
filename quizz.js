@@ -21,10 +21,15 @@ async function displayQuestion() {
 
 function handleResponse(elt) {
   console.log(elt);
-  console.log(state);
+  console.log(
+    "hide",
+    state.blockIndexSelected,
+    document.getElementById(state.blockIndexSelected)
+  );
   if (elt.innerText == correctAnswer) {
     document.getElementById("quizz-response").innerText = "OK";
-    document.getElementById(state.blockIndexSelected).style.display = "none";
+    document.getElementById(state.blockIndexSelected).style.visibility =
+      "hidden";
   } else {
     document.getElementById("quizz-response").innerText = "KO";
   }

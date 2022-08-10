@@ -38,6 +38,7 @@ function getRandomPicture() {
           newDiv.onclick = (element) => {
             console.log(element, element.target.id);
             displayQuestion();
+            console.log(element.target.id);
             state.blockIndexSelected = element.target.id;
           };
           document.getElementById("picture").appendChild(newDiv);
