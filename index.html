@@ -8,15 +8,23 @@
     <script src="quizz.js"></script>
   </head>
   <body>
+    <button onclick="displayQuestion()">Get question</button>
     <div id="quizz-modal">
+      <div class="close-button" onclick="hideModal()">X</div>
       <div id="quizz-container">
         <p id="question"></p>
-        <p id="answer-0" onclick="handleResponse(this)"></p>
-        <p id="answer-1" onclick="handleResponse(this)"></p>
-        <p id="answer-2" onclick="handleResponse(this)"></p>
-        <p id="answer-3" onclick="handleResponse(this)"></p>
+        <p id="answer-0" class="answer" onclick="handleResponse(this)"></p>
+        <p id="answer-1" class="answer" onclick="handleResponse(this)"></p>
+        <p id="answer-2" class="answer" onclick="handleResponse(this)"></p>
+        <p id="answer-3" class="answer" onclick="handleResponse(this)"></p>
       </div>
-      <div id="quizz-response-container"><p id="quizz-response"></p></div>
+      <div id="quizz-response-container">
+        <img id="response-gif" />
+        <p id="button-continue" class="answer" onclick="hideModal()">
+          Continue
+        </p>
+        <p id="quizz-response"></p>
+      </div>
     </div>
     <div class="container">
       <div class="main">
@@ -25,6 +33,10 @@
           <span id="timer"></span>
         </div>
         <div id="picture"></div>
+        <div id="letters-answer-container"></div>
+        <div id="picture-name-response-container">
+          <p id="picture-name-response"></p>
+        </div>
         <div id="letters-answer-container">
         </div>
         <div id="picture-name-response-container">

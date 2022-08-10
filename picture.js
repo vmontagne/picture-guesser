@@ -1,6 +1,11 @@
+let word = null;
+let input = "";
 
-let word = null
-let input = ""
+function hideModal() {
+  document.getElementById("quizz-modal").hidden = true;
+}
+
+hideModal();
 
 function State() {
   this.blockIndexSelected = null;
@@ -13,17 +18,17 @@ function getRandom(min, max) {
 }
 
 function generateEmptyWord() {
-  const container = document.getElementById("letters-answer-container")
-  console.log(container)
-  container.innerHTML = ""
-  for(var i = 0; i<word.length; i++) {
-    container.innerHTML += `<span id="letters-answer-${i}" class="letters-answer"></span>`
+  const container = document.getElementById("letters-answer-container");
+  console.log(container);
+  container.innerHTML = "";
+  for (var i = 0; i < word.length; i++) {
+    container.innerHTML += `<span id="letters-answer-${i}" class="letters-answer"></span>`;
   }
 }
 
 function getRandomPicture() {
   word = guess_words[getRandom(0, guess_words.length)];
-  generateEmptyWord()
+  generateEmptyWord();
   // clé pexel 563492ad6f9170000100000105f3aa73d49747628e4470501052b204
 
   fetch(
@@ -63,22 +68,22 @@ function getRandomPicture() {
 }
 
 function displayInput() {
-  console.log({word,input})
-  if(input.length > word.length) {
-    return
+  console.log({ word, input });
+  if (input.length > word.length) {
+    return;
   }
-  for (var i=0; i<word.length; i++) {
-    if(i < input.length) {
-      document.getElementById(`letters-answer-${i}`).innerText = input[i]
-      continue
+  for (var i = 0; i < word.length; i++) {
+    if (i < input.length) {
+      document.getElementById(`letters-answer-${i}`).innerText = input[i];
+      continue;
     }
-    document.getElementById(`letters-answer-${i}`).innerText = ""
+    document.getElementById(`letters-answer-${i}`).innerText = "";
   }
 }
 
 function checkInput() {
   if (word.length != input.length) {
-    return
+    return;
   }
   if(word.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "") == input.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")) {
     document.getElementById("picture-name-response").innerText = "Bravo !"
@@ -108,6 +113,7 @@ document.addEventListener('keyup', (event) => {
   }
   displayInput()
 });
+
 
 getRandomPicture();
 
